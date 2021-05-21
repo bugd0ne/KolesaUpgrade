@@ -1,6 +1,6 @@
 <?php
 
-class checkProductCest
+class CheckProductCest
 {
     // check product named "Bloose"
     public function checkProductBloose(AcceptanceTester $I)
