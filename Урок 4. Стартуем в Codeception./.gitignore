@@ -1,0 +1,8 @@
+# vendor foler
+
+vendor/*
+
+# _output data of test
+
+tests/_output/*
+!tests/_output/.gitkeep
