@@ -3,6 +3,6 @@
 Stack:
 * Git
 * PHP 7.4
-* Codeception
-* Selenium
-* Selenium Server
+* Codeception (4.1.20)
+* Chromedriver (latest)
+* CI (Github Actions)
