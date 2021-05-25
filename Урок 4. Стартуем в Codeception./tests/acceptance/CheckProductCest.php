@@ -13,9 +13,5 @@ class CheckProductCest
         $I->switchToIFrame('.fancybox-iframe');
         $I->seeElement('#product > div > div > div.pb-center-column.col-xs-12.col-sm-4 > h1');
         $I->waitForText('Blouse');
-        
-        // a little pending for not closing iframe after finding element with text - "Bloose"
-        $I->wait(3);
-
     }
 }
