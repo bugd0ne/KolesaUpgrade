@@ -12,7 +12,7 @@ class ChangingViewCest
 {
 
     /**
-     * Checking changing view in serch result page
+     * Checking changing view from default grid from list
      */
     public function checkChangingGridToList(AcceptanceTester $I)
     {
