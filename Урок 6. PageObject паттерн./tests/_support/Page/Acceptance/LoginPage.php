@@ -14,7 +14,7 @@ class LoginPage
      */
     public const PASSWORD = 'secret_sauce';
     /**
-     * URL for lpgin page
+     * URL for login page
      */
     public static $URL = '';
 

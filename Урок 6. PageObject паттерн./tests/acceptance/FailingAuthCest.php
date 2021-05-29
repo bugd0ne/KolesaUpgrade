@@ -10,7 +10,7 @@ class FailingAuthCest
     /**
     * Checking failed auth for locked user
     */
-    public function lockedUserFailAuth(AcceptanceTester $I)
+    public function checkLockedUserFailAuth(AcceptanceTester $I)
     {
         $loginPage = new LoginPage($I);
         $I->amOnPage(LoginPage::$URL);
