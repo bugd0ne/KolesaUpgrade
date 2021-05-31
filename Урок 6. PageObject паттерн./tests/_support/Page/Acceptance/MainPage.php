@@ -14,6 +14,7 @@ class MainPage
      * selector for menu of dreesses items
      */
     public static $dressesMenu = '#block_top_menu>ul>li:nth-child(2)';
+
     /**
      * selector for "Summer Dresses" item in menu
      */
@@ -24,6 +25,7 @@ class MainPage
      * @var \AcceptanceTester
      */
     protected $acceptanceTester;
+
     /**
      * constructor
      */
@@ -31,6 +33,7 @@ class MainPage
     {
         $this->acceptanceTester = $I;
     }
+    
     /**
      * function which finds summer dresses tab menu the go to page SummerDressesPage
      */
