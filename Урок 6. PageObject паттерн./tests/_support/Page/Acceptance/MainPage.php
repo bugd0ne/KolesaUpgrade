@@ -11,9 +11,12 @@ class MainPage
     public static $URL = '';
 
     /**
-     * selector for dresses catalog
+     * selector for menu of dreesses items
      */
     public static $dressesMenu = '#block_top_menu>ul>li:nth-child(2)';
+    /**
+     * selector for "Summer Dresses" item in menu
+     */
     public static $summerDressesCatalog = '#block_top_menu>ul>li:nth-child(2) li:nth-child(3)';
 
     /**

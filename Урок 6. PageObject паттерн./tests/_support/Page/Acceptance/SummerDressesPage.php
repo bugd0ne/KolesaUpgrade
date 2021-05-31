@@ -15,18 +15,22 @@ class SummerDressesPage
      * default view of products
      */
     public static $defaultProductsView = '//li[contains(@class, "selected")]';
+
     /**
      * selector of button that show products in grid view
      */
     public static $gridViewButton = 'li#grid';
+
     /**
      * selector of products container in grid view
      */
     public static $productsGridContainer = 'ul.grid';
+
     /**
      * selector of button that show products in list view
      */
     public static $listViewButton = 'li#list';
+    
     /**
      * selector of products container in list view
      */
@@ -41,10 +45,10 @@ class SummerDressesPage
     /**
      * constructor
      */
-    public function __construct(\AcceptanceTester $I)
-    {
+    public function __construct(\AcceptanceTester $I){
         $this->acceptanceTester = $I;
     }
+
     /**
      * function which checks thta i'm on current page
      */
@@ -52,6 +56,7 @@ class SummerDressesPage
         $this->acceptanceTester->seeInCurrentUrl(self::$URL);
         return $this;
     }
+
     /**
      * function which asserts default grid view on page
      */
@@ -59,6 +64,7 @@ class SummerDressesPage
         $this->acceptanceTester->seeElement(self::$gridViewButton);
         return $this;
     }
+
     /**
      * function which changes view from grid to list
      */
