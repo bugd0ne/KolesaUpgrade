@@ -12,5 +12,6 @@ modules:
             host: localhost
             port: 9515
             url: https://habr.com/ru/
+            window_size: 1440x900
         - \Helper\Acceptance
 step_decorators: ~        
