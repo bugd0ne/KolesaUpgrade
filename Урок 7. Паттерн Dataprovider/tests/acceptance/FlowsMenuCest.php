@@ -17,10 +17,10 @@ class FlowMenuCest
     public function checkFlowForOpening(AcceptanceTester $I, Example $data)
     {
         $I->amOnPage('');
-        $I->waitForElementVisible(sprintf(HabrMainPage::$flowLinkButton, $data['flow']));
-        $I->waitForElementClickable(sprintf(HabrMainPage::$flowLinkButton, $data['flow']));
-        $I->click(sprintf(HabrMainPage::$flowLinkButton, $data['flow']));
-        $I->seeInCurrentUrl(sprintf(HabrFlowPage::$URL, $data['flow']));
+        $I->waitForElementVisible(sprintf(HabrMainPage::$flowLinkButton, $data['flowLink']));
+        $I->waitForElementClickable(sprintf(HabrMainPage::$flowLinkButton, $data['flowLink']));
+        $I->click(sprintf(HabrMainPage::$flowLinkButton, $data['flowLink']));
+        $I->seeInCurrentUrl(sprintf(HabrFlowPage::$URL, $data['flowLink']));
         $I->waitForText(sprintf($data['flowName']), 2, HabrFlowPage::$pageHeader);
     }
 
@@ -30,12 +30,12 @@ class FlowMenuCest
     protected function getDataForFlow(){
 
         $flows = [
-            ['flow' => '/flows/develop/', 'flowName' => 'Разработка'],
-            ['flow' => '/flows/admin/', 'flowName' => 'Администрирование'],
-            ['flow' => '/flows/design/', 'flowName' => 'Дизайн'],
-            ['flow' => '/flows/management/', 'flowName' => 'Менеджмент'],
-            ['flow' => '/flows/marketing/', 'flowName' => 'Маркетинг'],
-            ['flow' => '/flows/popsci/', 'flowName' => 'Научпоп']
+            ['flowLink' => '/flows/develop/', 'flowName' => 'Разработка'],
+            ['flowLink' => '/flows/admin/', 'flowName' => 'Администрирование'],
+            ['flowLink' => '/flows/design/', 'flowName' => 'Дизайн'],
+            ['flowLink' => '/flows/management/', 'flowName' => 'Менеджмент'],
+            ['flowLink' => '/flows/marketing/', 'flowName' => 'Маркетинг'],
+            ['flowLink' => '/flows/popsci/', 'flowName' => 'Научпоп']
         ];
 
         shuffle($flows);
