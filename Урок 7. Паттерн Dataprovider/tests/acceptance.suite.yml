@@ -11,7 +11,8 @@ modules:
             browser: chrome
             host: localhost
             port: 9515
-            url: https://habr.com/ru/
+            # url: https://habr.com/ru/
+            url: https://prostochizh.github.io/form/
             window_size: 1440x900
         - \Helper\Acceptance
 step_decorators: ~        
