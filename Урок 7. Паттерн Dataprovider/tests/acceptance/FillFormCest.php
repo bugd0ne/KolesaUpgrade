@@ -2,6 +2,7 @@
 
 use Codeception\Example;
 use Page\Acceptance\FormPage;
+use Helper\BaseHelper;
 
 /**
  * class with test for filling form
@@ -16,31 +17,42 @@ class FillFormCest
      */
     public function checkCreditCardPaymentmethod(AcceptanceTester $I, Example $dataProduct, Example $dataMonth)
     {
+        //data fro faker
+        $userName = $I->initFaker()->firstName;
+        $lastName = $I->initFaker()->lastName;
+        $email = $I->initFaker()->email;
+        $phoneKZ = $I->initFaker()->getPhoneKZ();
+        $address = $I->initFaker()->address;
+        $city = $I->initFaker()->city;
+        $region = $I->initFaker()->region;
+        $postal = $I->initFaker()->postcode;
+        $creditCardNumber = $I->initFaker()->getCreditCardNumber();
+        $securityCode = $I->initFaker()->getSecurityCode();
+
+
         $I->amOnPage('');
-        $I->fillField(FormPage::$firstNameInput, 'John');
-        $I->fillField(FormPage::$lastNameInput, 'Doe');
-        $I->fillField(FormPage::$emailInput, 'john.doe@hotmail.com');
-        $I->fillField(FormPage::$phoneNumberInput, '+4 (495) 345-234');
-        $I->fillField(FormPage::$streetAddressInput, '23 Washington street');
-        $I->fillField(FormPage::$streetAddress2Input, null);
-        $I->fillField(FormPage::$cityInput, 'Caracas');
-        $I->fillField(FormPage::$stateInput, 'Caracas');
-        $I->fillField(FormPage::$postalCodeInput, '64753');
+        $I->fillField(FormPage::$firstNameInput, $userName);
+        $I->fillField(FormPage::$lastNameInput, $lastName);
+        $I->fillField(FormPage::$emailInput, $email);
+        $I->fillField(FormPage::$phoneNumberInput, $phoneKZ);
+        $I->fillField(FormPage::$streetAddressInput, $address);
+        $I->fillField(FormPage::$cityInput, $city);
+        $I->fillField(FormPage::$stateInput, $region);
+        $I->fillField(FormPage::$postalCodeInput, $postal);
         $I->click(sprintf(FormPage::$memberCheckBox, $dataProduct['product']));
         $I->click(FormPage::$creditRadioButton);
-        $I->fillField(FormPage::$ccFirstNameInput, 'John');
-        $I->fillField(FormPage::$ccLastNameInput, 'Doe');
-        $I->fillField(FormPage::$ccNumberInput, '555 444 333 2222');
-        $I->fillField(FormPage::$ccSecurityCodeInput, '111');
+        $I->fillField(FormPage::$ccFirstNameInput, $userName);
+        $I->fillField(FormPage::$ccLastNameInput, $lastName);
+        $I->fillField(FormPage::$ccNumberInput, $creditCardNumber);
+        $I->fillField(FormPage::$ccSecurityCodeInput, $securityCode);
         // $I->selectOption(FormPage::$ccExpirationMonthSelect, sprintf(FormPage::$ccExpirationMonthOption, $dataMonth['month']));
         $I->selectOption(FormPage::$ccExpirationMonthSelect, 'February');
         $I->selectoption(FormPage::$ccExpirationYearSelect, '2024');
-        $I->fillField(FormPage::$ccStreetAddressInput, '23 Washington street');
-        $I->fillField(FormPage::$ccStreetAddress2Input, null);
-        $I->fillField(FormPage::$ccCityInput, 'Caracas');
-        $I->fillField(FormPage::$ccStateInput, 'Caracas');
-        $I->fillField(FormPage::$ccPostalCodeInput, '64753');
-        $I->selectoption(FormPage::$ccCountrySelect, 'Peru');
+        $I->fillField(FormPage::$ccStreetAddressInput, $address);
+        $I->fillField(FormPage::$ccCityInput, $city);
+        $I->fillField(FormPage::$ccStateInput, $region);
+        $I->fillField(FormPage::$ccPostalCodeInput, $postal);
+        $I->selectoption(FormPage::$ccCountrySelect, 'Russia');
         $I->click(FormPage::$registerButton);
         $I->waitForText('Good job');
 

@@ -15,4 +15,5 @@ modules:
             url: https://prostochizh.github.io/form/
             window_size: 1440x900
         - \Helper\Acceptance
+        - \Helper\BaseHelper
 step_decorators: ~        
