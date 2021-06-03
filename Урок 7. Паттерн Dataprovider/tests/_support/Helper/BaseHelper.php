@@ -3,11 +3,16 @@ namespace Helper;
 
 use Faker\Factory;
 
-// here you can define custom actions
-// all public methods declared in helper class will be available in $I
+/**
+ * Base Helper fir initialization Faker and custom faker provider
+ */
 
 class BaseHelper extends \Codeception\Module
 {
+    /**
+     * init Faker function in one place
+     * @param $locale
+     */
     public function initFaker($locale){
         $faker = Factory::create($locale);
         $faker->addProvider(new CustomFakerProvider($faker));
