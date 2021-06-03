@@ -34,6 +34,22 @@ class CustomFakerProvider extends Base
     ];
 
     /**
+     * protected var with years of expiration for credit card
+     */
+    protected $creditCardExpirationYear = [
+        '2021',
+        '2022',
+        '2023',
+        '2024',
+        '2025',
+        '2026',
+        '2027',
+        '2028',
+        '2029',
+        '2030'
+    ];
+
+    /**
      * Return phone number in KZ standart
      */
     public function getPhoneKZ(){
@@ -66,4 +82,13 @@ class CustomFakerProvider extends Base
         );
     }
 
+    /**
+     * Return year of expiration for credit card
+     */
+    public function getExpirationYear(){
+        return sprintf(
+            '%s',
+            $this->creditCardExpirationYear[array_rand($this->creditCardExpirationYear)]
+        );
+    }
 }

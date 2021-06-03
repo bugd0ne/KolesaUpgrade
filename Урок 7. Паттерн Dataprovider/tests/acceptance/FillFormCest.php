@@ -12,22 +12,25 @@ class FillFormCest
 
     /**
      * test checkig filling form with payment method that is "Credit card"
-     * @dataProvider getProduct
-     * @dataProvider getMonth
+     * @param Example $data
+     * @dataProvider getDataForForm
      */
-    public function checkCreditCardPaymentmethod(AcceptanceTester $I, Example $dataProduct, Example $dataMonth)
+    public function checkCreditCardPaymentmethod(AcceptanceTester $I, Example $data, Example $dataMonth)
     {
-        //data fro faker
-        $userName = $I->initFaker()->firstName;
-        $lastName = $I->initFaker()->lastName;
-        $email = $I->initFaker()->email;
-        $phoneKZ = $I->initFaker()->getPhoneKZ();
-        $address = $I->initFaker()->address;
-        $city = $I->initFaker()->city;
-        $region = $I->initFaker()->region;
-        $postal = $I->initFaker()->postcode;
-        $creditCardNumber = $I->initFaker()->getCreditCardNumber();
-        $securityCode = $I->initFaker()->getSecurityCode();
+        //data for faker
+        $userName = $I->initFaker('ru_RU')->firstName;
+        $lastName = $I->initFaker('ru_RU')->lastName;
+        $email = $I->initFaker('ru_RU')->email;
+        $phoneKZ = $I->initFaker('ru_RU')->getPhoneKZ();
+        $address = $I->initFaker('ru_RU')->address;
+        $city = $I->initFaker('ru_RU')->city;
+        $region = $I->initFaker('ru_RU')->region;
+        $postal = $I->initFaker('ru_RU')->postcode;
+        $creditCardNumber = $I->initFaker('ru_RU')->getCreditCardNumber();
+        $securityCode = $I->initFaker('ru_RU')->getSecurityCode();
+        $country = $I->initFaker('en_US')->country();
+        $month = $I->initFaker('en_US')->monthName();
+        $year = $I->initFaker('en_US')->getExpirationYear();
 
 
         $I->amOnPage('');
@@ -39,77 +42,35 @@ class FillFormCest
         $I->fillField(FormPage::$cityInput, $city);
         $I->fillField(FormPage::$stateInput, $region);
         $I->fillField(FormPage::$postalCodeInput, $postal);
-        $I->click(sprintf(FormPage::$memberCheckBox, $dataProduct['product']));
+        $I->click(sprintf(FormPage::$memberCheckBox, $data['data']));
         $I->click(FormPage::$creditRadioButton);
         $I->fillField(FormPage::$ccFirstNameInput, $userName);
         $I->fillField(FormPage::$ccLastNameInput, $lastName);
         $I->fillField(FormPage::$ccNumberInput, $creditCardNumber);
         $I->fillField(FormPage::$ccSecurityCodeInput, $securityCode);
-        // $I->selectOption(FormPage::$ccExpirationMonthSelect, sprintf(FormPage::$ccExpirationMonthOption, $dataMonth['month']));
-        $I->selectOption(FormPage::$ccExpirationMonthSelect, 'February');
-        $I->selectoption(FormPage::$ccExpirationYearSelect, '2024');
+        $I->selectOption(FormPage::$ccExpirationMonthSelect, $month);
+        $I->selectoption(FormPage::$ccExpirationYearSelect, $year);
         $I->fillField(FormPage::$ccStreetAddressInput, $address);
         $I->fillField(FormPage::$ccCityInput, $city);
         $I->fillField(FormPage::$ccStateInput, $region);
         $I->fillField(FormPage::$ccPostalCodeInput, $postal);
-        $I->selectoption(FormPage::$ccCountrySelect, 'Russia');
+        $I->selectoption(FormPage::$ccCountrySelect, $country);
         $I->click(FormPage::$registerButton);
         $I->waitForText('Good job');
 
     }
 
     /**
-     * dataprovider function fro getting product to check
+     * dataprovider function for getting product to check in box
      */
-    protected function getProduct(){
+    protected function getDataForForm(){
         
-        $products = [
-            ['product' => '#input_32_1004'],
-            ['product' => '#input_32_1002']
+        $data = [
+            ['data' => '#input_32_1004'],
+            ['data' => '#input_32_1002']
         ];
 
-        shuffle($products);
-        return array_slice($products, 0, 1);
+        shuffle($data);
+        return array_slice($data, 0, 1);
     }
-
-    /*
-    protected function getMonth(){
-        $months = [
-            ['month' => 'January'],
-            ['month' => 'February'],
-            ['month' => 'March'],
-            ['month' => 'April'],
-            ['month' => 'May'],
-            ['month' => 'June'],
-            ['month' => 'July'],
-            ['month' => 'August'],
-            ['month' => 'September'],
-            ['month' => 'October'],
-            ['month' => 'November'],
-            ['month' => 'December']
-        ];
-
-        shuffle($months);
-        return array_slice($months, 0, 1);
-    }
-
-    protected function getYear (){
-        $months = [
-            ['year' => '2021'],
-            ['year' => '2022'],
-            ['year' => '2023'],
-            ['year' => '2023'],
-            ['year' => '2024'],
-            ['year' => '2025'],
-            ['year' => '2026'],
-            ['year' => '2027'],
-            ['year' => '2028'],
-            ['year' => '2029'],
-            ['year' => '2030'],
-        ];
-
-        shuffle($years);
-        return array_slice($years, 0, 1);
-    }
-    */
 }
