@@ -15,7 +15,7 @@ class FillFormCest
      * @param Example $data
      * @dataProvider getDataForForm
      */
-    public function checkCreditCardPaymentmethod(AcceptanceTester $I, Example $data, Example $dataMonth)
+    public function checkCreditCardPaymentmethod(AcceptanceTester $I, Example $data)
     {
         //data for faker
         $userName = $I->initFaker('ru_RU')->firstName;
@@ -31,7 +31,6 @@ class FillFormCest
         $country = $I->initFaker('en_US')->country();
         $month = $I->initFaker('en_US')->monthName();
         $year = $I->initFaker('en_US')->getExpirationYear();
-
 
         $I->amOnPage('');
         $I->fillField(FormPage::$firstNameInput, $userName);

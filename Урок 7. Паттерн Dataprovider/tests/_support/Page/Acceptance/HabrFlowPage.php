@@ -2,7 +2,7 @@
 namespace Page\Acceptance;
 
 /**
- * 
+ * Page of one of the habr glow (e.g. "Development", "Design" etc.)
  */
 class HabrFlowPage
 {

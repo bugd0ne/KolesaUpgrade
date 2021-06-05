@@ -1,6 +1,9 @@
 <?php
 namespace Page\Acceptance;
 
+/**
+ * Main page of the habr.com
+ */
 class HabrMainPage
 {
     /**
