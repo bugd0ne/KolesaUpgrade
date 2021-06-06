@@ -56,7 +56,7 @@ class LoginPage
     /**
      * log out from current user
      */
-    public function logOut()
+    public function signOut()
     {
         $this->acceptanceTester->click(self::$signOutButton);
 
