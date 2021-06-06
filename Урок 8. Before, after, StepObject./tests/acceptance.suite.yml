@@ -7,7 +7,12 @@
 actor: AcceptanceTester
 modules:
     enabled:
-        - PhpBrowser:
-            url: http://localhost/myapp
+        - WebDriver:
+            url: http://automationpractice.com
+            browser: chrome
+            host: localhost
+            port: 9515
+            window_size: 1440x900
         - \Helper\Acceptance
+        - Asserts
 step_decorators: ~        
