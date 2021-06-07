@@ -53,4 +53,14 @@ class MainPage
     {
         $this->acceptanceTester = $I;
     }
+
+    /**
+     * fucntion for open account page
+     */
+    public function openMyAccount()
+    {
+        $this->acceptanceTester->click(MainPage::$userInfoButton);
+
+        return new AccountPage($this->acceptanceTester->seeInCurrentUrl(AccountPage::$URL));
+    }
 }

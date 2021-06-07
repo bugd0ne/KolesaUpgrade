@@ -26,4 +26,15 @@ class AccountPage
         $this->acceptanceTester = $I;
     }
 
+    /**
+     * function for open my wishlists
+     */
+    public function openMyWishlists()
+    {
+        $this->acceptanceTester->waitForElementClickable(self::$myWishlistsButton);
+        $this->acceptanceTester->click(self::$myWishlistsButton);
+
+        return new WishlistsPage($this->acceptanceTester->seeInCurrentUrl(WishlistsPage::$URL));
+    }
+
 }

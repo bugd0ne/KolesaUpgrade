@@ -27,17 +27,15 @@ class WishlistCest
     public function checkAddToWishlist(\Step\Acceptance\WishlistStep $I)
     {
         $wishlistPage = new WishlistsPage($I);
+        $mainPage = new MainPage($I);
+        $accountPage = new AccountPage($I);
 
         $I->amOnPage('');
         $I->comment("I'm adding product to wislist");
         $I->addProductToWishlist();
-        //mb another step?
-        $I->click(MainPage::$userInfoButton);
-        $I->seeInCurrentUrl(AccountPage::$URL);
-        $I->waitForElementClickable(AccountPage::$myWishlistsButton);
-        $I->click(AccountPage::$myWishlistsButton);
-        $I->seeInCurrentUrl(WishlistsPage::$URL);
-        $I->assertEquals($wishlistPage->getQtyOfAddedProducts(), WishlistStep::PRODUCTS_NMB, "checks qty");
+        $mainPage->openMyAccount();
+        $accountPage->openMyWishlists();
+        $I->assertEquals($wishlistPage->getQtyOfAddedProducts(), WishlistStep::PRODUCTS_NMB, "Checking equality between actual and expected");
     }
 
 /**
@@ -51,8 +49,8 @@ public function _after(\AcceptanceTester $I)
 
         $wishlistPage->clearWishlist();
 
-        $loginPage1 = new LoginPage($I);
+        $loginPage = new LoginPage($I);
         
-        $loginPage1->signOut();
+        $loginPage->signOut();
     }
 }
