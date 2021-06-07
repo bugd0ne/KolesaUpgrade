@@ -40,4 +40,17 @@ class MainPage
      * button redirectiong to account page
      */
     public static $userInfoButton = '//div[@class="header_user_info"][1]';
+
+        /**
+     * @var \AcceptanceTester;
+     */
+    protected $acceptanceTester;
+
+    /**
+     * constructor method
+     */
+    public function __construct(\AcceptanceTester $I)
+    {
+        $this->acceptanceTester = $I;
+    }
 }
