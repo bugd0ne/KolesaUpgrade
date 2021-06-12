@@ -1,6 +1,9 @@
 <?php
 namespace Page\Acceptance;
 
+/**
+ * page of elements on my wishlist
+ */
 class WishlistsPage
 {
     /**
@@ -49,6 +52,4 @@ class WishlistsPage
 
         return $this;
     }
-
-
 }
