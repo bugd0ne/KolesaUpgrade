@@ -1,6 +1,9 @@
 <?php
 namespace Page\Acceptance;
 
+/**
+ * page with elements for log in to site
+ */
 class LoginPage
 {
     /**
@@ -12,7 +15,6 @@ class LoginPage
      * hardcoded password for login
      */
     public const PASSWD = 'XJNFxep^Q$Rc';
-
 
     /**
      * url of login page

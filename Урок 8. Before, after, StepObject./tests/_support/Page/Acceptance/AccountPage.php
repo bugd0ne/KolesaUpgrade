@@ -14,7 +14,7 @@ class AccountPage
     public static $myWishlistsButton = '//li[@class="lnk_wishlist"]';
 
     /**
-     * @var \AcceptanceTester;
+     * @var \AcceptanceTester
      */
     protected $acceptanceTester;
 
@@ -34,7 +34,6 @@ class AccountPage
         $this->acceptanceTester->waitForElementClickable(self::$myWishlistsButton);
         $this->acceptanceTester->click(self::$myWishlistsButton);
 
-        return new WishlistsPage($this->acceptanceTester->seeInCurrentUrl(WishlistsPage::$URL));
+        return new WishlistsPage($this->acceptanceTester);
     }
-
 }
