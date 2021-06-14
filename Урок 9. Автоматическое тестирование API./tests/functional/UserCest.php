@@ -21,26 +21,26 @@ class UserCest
         ];
 
         $I->haveHttpHeader('Content-Type', 'application/json');
-        $I->sendPost(Urls::$POST, $body);
+        $I->sendPost(Urls::$createUser, $body);
         $I->seeResponseCodeIsSuccessful();
         $I->seeResponseContainsJson(["status" => "ok"]);
         // grab _id for PUT
         $userId = implode($I->grabDataFromResponseByJsonPath('$._id'));
         // get request for getting info about posted user
-        $I->sendGet(Urls::$GET, ['owner' => $owner]);
+        $I->sendGet(Urls::$getUserByOwner, ['owner' => $owner]);
         // put for updating user's name
-        $I->sendPut(Urls::$PUT.$userId, ['name' => $updatedName = $I->initFaker()->name.'updated']);
+        $I->sendPut(Urls::$editUser.$userId, ['name' => $updatedName = $I->initFaker()->name.'updated']);
         $I->seeResponseCodeIsSuccessful();
         $I->seeResponseContainsJson(["nModified" => 1]);
         //get response with updated name
-        $I->sendGet(Urls::$GET, ['owner' => $owner]);
+        $I->sendGet(Urls::$getUserByOwner, ['owner' => $owner]);
         $I->seeResponseContainsJson(['name' => $updatedName]);
         // delete user
-        $I->sendDelete(Urls::$DELETE.$userId);
+        $I->sendDelete(Urls::$deleteUser.$userId);
         $I->seeResponseCodeIsSuccessful();
         $I->seeResponseContainsJson(["deletedCount" => 1]);
         // get response with empty body
-        $I->sendGet(Urls::$GET, ['owner' => $owner]);
+        $I->sendGet(Urls::$getUserByOwner, ['owner' => $owner]);
         $I->seeResponseContainsJson([]);
     }
 }

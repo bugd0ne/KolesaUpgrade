@@ -9,20 +9,20 @@ class Urls extends \Codeception\Module
     /**
      * value for POST request
      */
-    public static $POST = '/human';
+    public static $createUser = '/human';
 
     /**
      * value for GET request
      */
-    public static $GET = '/people';
+    public static $getUserByOwner = '/people';
 
     /**
      * value for PUT request
      */
-    public static $PUT = '/human?_id=';
+    public static $editUser = '/human?_id=';
 
     /**
      * value for PUT request
      */
-    public static $DELETE = '/human?_id=';
+    public static $deleteUser = '/human?_id=';
 }
