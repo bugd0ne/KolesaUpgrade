@@ -29,7 +29,8 @@ class UserCest
         // get request for getting info about posted user
         $I->sendGet(Urls::$getUserByOwner, ['owner' => $owner]);
         // put for updating user's name
-        $I->sendPut(Urls::$editUser.$userId, ['name' => $updatedName = $I->initFaker()->name.'updated']);
+        $updatedName = $I->initFaker()->name.'updated';
+        $I->sendPut(Urls::$editUser.$userId, ['name' => $updatedName]);
         $I->seeResponseCodeIsSuccessful();
         $I->seeResponseContainsJson(["nModified" => 1]);
         //get response with updated name
